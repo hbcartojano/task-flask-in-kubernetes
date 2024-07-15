@@ -1,0 +1,17 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: simple-web-app-ingress
+  annotations:
+    kubernetes.io/ingress.class: standard
+spec:
+  rules:
+  - http:
+      paths:
+      - path: /app(/|$)(.*)
+        pathType: Prefix
+        backend:
+          service:
+            name: simple-web-ap
+            port: 
+              number: 80
