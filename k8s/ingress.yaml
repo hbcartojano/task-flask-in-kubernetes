@@ -12,6 +12,6 @@ spec:
         pathType: Prefix
         backend:
           service:
-            name: simple-web-ap
+            name: simple-web-app
             port: 
               number: 80
