@@ -37,7 +37,7 @@ spec:
         livenessProbe:
           httpGet:
             path: /healthy
-            port: 8080
+            port: 5000
           initialDelaySeconds: 15
           periodSeconds: 10
         imagePullPolicy: IfNotPresent

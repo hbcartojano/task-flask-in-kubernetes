@@ -1,6 +1,8 @@
-# Steps
-1. Run the Python application locally. Check the endpoints if accessible and showing correct response
-- Findings: No issue with Python application when running locally.
+# Run Application on Docker
+
+## Steps
+1. Run the Python application locally outside of Docker. Check the endpoints if accessible and showing correct response
+- Findings: No issue with Python application when running locally outside of Docker.
 2. Inspect Dockerfile, build image and run container. Check endpoints if accessible and showing correct response
 - Findings: 
     - Incorrect port exposed
@@ -21,6 +23,17 @@ import site
 for path in site.getsitepackages():
     print(path)
 ```
+4. Once container does not exit and the flask app is up, check routes if accessible and showing correct response --> It does
 
+# Run Application on Kubernetes Cluster
+## Steps
+1. Inspect deployment.yaml
+- Change ports for liveness and readiness
+2. Inspect hpa.yaml
+3. Inspect ingress.yaml
+4. Inspect service.yaml
+- Change target port to 5000
+5. Run kubectl apply
+6. 
 
 
