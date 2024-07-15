@@ -1,0 +1,52 @@
+app:
+  name: simple-web-app
+  replicas: 1
+  port: 5000
+
+image:
+  repository: simple-web-app
+  tag: latest
+  pullPolicy: IfNotPresent
+
+environment:
+  FLASK_ENV: "production"
+  FLASK_DEBUG: "1"
+
+resources:
+  requests:
+    memory: "128Mi"
+  limits:
+    memory: "256Mi"
+    cpu: "100m"
+
+probes:
+  readiness:
+    path: /healthy
+    port: 5000
+    initialDelaySeconds: 10
+    periodSeconds: 5
+  liveness:
+    path: /healthy
+    port: 5000
+    initialDelaySeconds: 15
+    periodSeconds: 10
+
+service:
+  type: NodePort
+  port: 80
+  nodePort: 30080
+
+hpa:
+  name: simple-web-app-hpa
+  minReplicas: 2
+  maxReplicas: 10
+  targetCPUUtilization: 50
+
+ingress:
+  name: simple-web-app-ingress
+  className: nginx
+  annotations:
+    useRegex: "true"
+    rewriteTarget: /$2
+  path: /app(/|$)(.*)
+  pathType: ImplementationSpecific

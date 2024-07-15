@@ -1,0 +1,4 @@
+apiVersion: v2
+name: simplewebappchart
+version: 0.1.0
+description: Helm chart for deployment of simple web app

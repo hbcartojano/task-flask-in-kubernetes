@@ -25,7 +25,7 @@ for path in site.getsitepackages():
 ```
 4. Once container does not exit and the flask app is up, check routes if accessible and showing correct response --> It does
 
-# Run Application on Kubernetes Cluster (Minikube)
+# Run Application on Minikube
 ## Steps
 1. Inspect deployment.yaml
 - Change ports for liveness and readiness
@@ -41,7 +41,8 @@ for path in site.getsitepackages():
 - Change Ingress class name to nginx. Add annotations for regex and URL rewrite. Fix service name typo.
 6. Apply the changes and observe if behavior is as intended --> It is, using minikube tunnel and enabling ingress add ons.
 
-
-
+# Create Helm Charts 
+1. Create templates and values.yaml file
+2. Test deploy with helm chart
 
 
